@@ -1,5 +1,5 @@
 /**
- * @name EmbedMoreImages
+ * @name Embed More Images
  * @author Knew
  * @description Embeds images that are usually unembedded in Discord.
  * @version 1.0
@@ -10,7 +10,7 @@
  * @updateUrl https://raw.githubusercontent.com/Knewest/embed-more-images/main/EmbedMoreImages.plugin.js
  */
 
-	class EmbedMoreImages {
+	module.exports = class EmbedMoreImages {
 	    constructor() {
 			this.embeddedImages = new Set();
 			this.io = null;
