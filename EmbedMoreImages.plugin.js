@@ -2,27 +2,27 @@
  * @name Embed More Images
  * @author Knew
  * @description Embeds images that are usually unembedded in Discord.
- * @version 1.0
+ * @version 1.1
  * @authorId 332116671294734336
  * @authorLink https://github.com/Knewest
+ * @invite NqqqzajfK4
  * @website https://twitter.com/KnewestLSEP
  * @source https://github.com/Knewest/embed-more-images
  * @updateUrl https://raw.githubusercontent.com/Knewest/embed-more-images/main/EmbedMoreImages.plugin.js
  */
 
 	module.exports = class EmbedMoreImages {
-	    constructor() {
+		constructor() {
 			this.embeddedImages = new Set();
 			this.io = null;
 			this.containerObserver = null;
 			this.observer = null;
 			
 			this.settings = {
-			enableFormatExtension: true
-		};
-	
+			  enableFormatExtension: true
+			};
 	}
-    
+
 	load() {
 		let loadedData = BdApi.loadData("EmbedMoreImages", "enableFormatExtension");
 		this.settings.enableFormatExtension = loadedData !== undefined ? loadedData : true;
@@ -30,54 +30,44 @@
 
 	unload() {
 		BdApi.saveData("EmbedMoreImages", "enableFormatExtension", this.settings.enableFormatExtension);
+	 }
+
+	createHTML(content, classes = "", styles = "") {
+		let element = document.createElement('div');
+		element.innerHTML = content.trim();
+		element.className = classes;
+		element.style = styles;
+		return element;
 	}
+    
+    getSettingsPanel() {
+        let panel = this.createHTML(`<h2>General:</h2>`, '', "overflow: auto; padding: 16px; background-color: #36393f; color: #ffffff; font-size: 16px;");
+        let header = panel.firstChild;
+        header.style = "margin-bottom: 16px; border-bottom: 1px solid #72767d;";
 
-	getSettingsPanel() {
-		let panel = document.createElement('div');
-		panel.style = "overflow: auto; padding: 16px; background-color: #36393f; color: #ffffff; font-size: 16px;";
+        let checkboxContainer = this.createHTML(`
+            <input type="checkbox" id="imgExtension" name="imgExtension" style="margin-right: 8px;">
+            <label htmlFor="imgExtension">Enable format extension indicator</label>
+        `, "display: flex; align-items: center;");
 
-		let header = document.createElement('h2');
-		header.textContent = "General:";
-		header.style = "margin-bottom: 16px; border-bottom: 1px solid #72767d;";
-		panel.appendChild(header);
+        let checkbox = checkboxContainer.firstChild;
+        checkbox.checked = BdApi.loadData("EmbedMoreImages", "enableFormatExtension");
+        checkbox.addEventListener('change', () => {
+            this.settings.enableFormatExtension = checkbox.checked; 
+            BdApi.saveData("EmbedMoreImages", "enableFormatExtension", this.settings.enableFormatExtension);
+            const extensionDivs = document.querySelectorAll('.imgExtension-EmbedMoreImages');
+            extensionDivs.forEach(div => {
+                div.style.display = this.settings.enableFormatExtension ? 'block' : 'none';
+            });
+        });
+        panel.appendChild(checkboxContainer);
 
-		let checkboxContainer = document.createElement('div');
-		checkboxContainer.style = "display: flex; align-items: center;";
-
-		let checkbox = document.createElement('input');
-		checkbox.type = "checkbox";
-		checkbox.id = "imgExtension";
-		checkbox.name = "imgExtension";
-	checkbox.checked = BdApi.loadData("EmbedMoreImages", "enableFormatExtension");
-		checkbox.style = "margin-right: 8px;";
-		checkboxContainer.appendChild(checkbox);
-
-	checkbox.addEventListener('change', () => {
-	  this.settings.enableFormatExtension = checkbox.checked; 
-	  BdApi.saveData("EmbedMoreImages", "enableFormatExtension", this.settings.enableFormatExtension);
-	  
-	  const extensionDivs = document.querySelectorAll('.imgExtension-EmbedMoreImages');
-	  extensionDivs.forEach(div => {
-		div.style.display = this.settings.enableFormatExtension ? 'block' : 'none';
-	  });
-	});
-
-
-		let checkboxLabel = document.createElement('label');
-		checkboxLabel.htmlFor = "imgExtension";
-		checkboxLabel.textContent = "Enable format extension indicator";
-		checkboxContainer.appendChild(checkboxLabel);
-
-		checkbox.checked = this.settings.enableFormatExtension;
-
-		panel.appendChild(checkboxContainer);
-
-		return panel;
-	}
+        return panel;
+    }
 
 
 	embedImagesInContainer(container) {
-	  const imgExtensions = ['.webp', '.apng', '.png', '.jpe', '.jfif', '.jif', '.jfi', '.avif', '.bmp', '.dib', '.rle', '.ico', '.cur'];
+	  const imgExtensions = ['.webp', '.apng', '.png', '.jpe', '.jfif', '.jif', '.jfi', '.avif', '.bmp', '.dib', '.rle', '.ico', '.cur', '.WEBP', '.APNG', '.PNG', '.JPE', '.JFIF', '.JIF', '.JFI', '.AVIF', '.BMP', '.DIB', '.RLE', '.ICO', '.CUR'];
 	  const links = container.querySelectorAll('.fileNameLink-1odyIc');
 
 	const embedImageRecursive = (index) => {
@@ -192,12 +182,13 @@
 		});
 	}
 
-loadImageOnIntersection(img, url) {
-	const loadImage = () => {
-		this.preloadImage(img, url)
-			.then(() => {
-				img.src = url;
-			})
+	loadImageOnIntersection(img, url) {
+		const loadImage = () => {
+			this.preloadImage(img, url).then(() => {
+			    img.src = url;
+			}).catch(err => {
+		  console.error('Error loading image:', err);
+		});
 	};
 
 	if ('IntersectionObserver' in window) {
@@ -330,12 +321,8 @@ start() {
 				  return;
 				}
 
-				if (node.classList.contains('nonMediaAttachmentItem-1e7YaR')) {
-				  this.embedImagesInContainer(node);
-				} else {
-				  const containers = node.querySelectorAll('.nonMediaAttachmentItem-1e7YaR');
-				  containers.forEach((container) => this.embedImagesInContainer(container));
-				}
+				const containers = node.classList.contains('nonMediaAttachmentItem-1e7YaR') ? [node] : node.querySelectorAll('.nonMediaAttachmentItem-1e7YaR');
+				containers.forEach((container) => this.embedImagesInContainer(container));
 				
 				this.embedImagesInView();
 			  }
@@ -404,22 +391,8 @@ stop() {
   }
 }
 
-	document.addEventListener("DOMContentLoaded", function() {
-	  if (typeof EmbedMoreImages !== 'function') {
-		return;
-	  }
-
-	  const embedMoreImages = new EmbedMoreImages();
-
-	  if (typeof embedMoreImages.start !== 'function') {
-		return;
-	  }
-
-	  embedMoreImages.start();
-	});
-
 	/**
-	* Version 1.0 of Embed More Images
+	* Version 1.1 of Embed More Images
 	* Copyright (Boost Software License 1.0) 2023-2023 Knew
 	* Link to plugin: https://github.com/Knewest/embed-more-images
 	*/
