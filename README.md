@@ -14,13 +14,13 @@ Here is a table listing all the image formats Discord currently supports and tha
 |:---:|:---:|:---:|:---:|
 |**PNG**|`*.png`|`*.png`|Nothing noteworthy.|
 |**JPEG 1**|`*.jpg`, `*.jpeg`|`*.jpg`, `*.jpeg`, `*.jpe`, `*.jfif`, `*.jif`, `*.jfi`|Discord can but will not support these very common extentions of JPEG 1.<br>I don't know why.|
-|**WebP**|`.webp`|`.webp`|Although Discord will embed WebP, they will only embed static WebP-- for whatever reason, Discord can but won't support sequenced WebP. My guess is their concern for CPU usage.<br>Regardless, Embed More Images will embed sequenced WebP.|
+|**WebP**|`*.webp`|`*.webp`|Although Discord will embed WebP, they will only embed static WebP-- for whatever reason, Discord can but won't support sequenced WebP. My guess is their concern for CPU usage.<br>Regardless, Embed More Images will embed sequenced WebP.|
 |**APNG**|None.|`*.apng`, `*.png`|Discord used to embed the first frame of APNG files in a `*.png` extention without stripping all APNG data, but Discord completely disabled and broke APNG support when they addressed the infamous 'acropalypse' vulnerbility.<br>Embed More Images will embed these formats, but with limited functionality because of Discord.<br><sub>Learn more: https://en.wikipedia.org/wiki/ACropalypse</sub>|
 |**BMP**|None.|`*.bmp`, `*.dib`, `*.rle`|Discord can but will not support this format.<br>I don't know why.|
 |**ICO**|None.|`*.ico`|Discord can but will not support this format. It's based off of BMP.|
 |**CUR**|None.|`*.cur`|Discord can but will not support this format. It's based off of BMP.|
 |**AVIF**|None.|`*.avif`|Discord can but will not support this format.<br>I don't know why.|
-|**JPEG XL**|None.|None.|Because Discord runs on Electron - which is Chromium based - we unfortunately lack JPEG XL support because Google backed out in supporting them.<br><sub>Learn more: https://bugs.chromium.org/p/chromium/issues/detail?id=1178058#c406</sub>|
+|**JPEG XL**|None.|None.|Because Discord runs on Electron - which is Chromium based - we unfortunately lack JPEG XL support because Google backed out in supporting JPEG XL.<br><sub>Learn more: https://bugs.chromium.org/p/chromium/issues/detail?id=1178058#c406</sub>|
 |**SVG**|None.|`*.svg`|Discord can but doesn't support the embedding of SVG, most likely due to believed security risks. SVG support will be added in a future version on this plugin as an option.|
 |**HEIF**|None.|None.|Currently, if you attempt to post a `*.heic` on mobile, it will be automatically converted to a JPEG 1 in a `*.jpg` container. HEIF is not supported at all.|
 
