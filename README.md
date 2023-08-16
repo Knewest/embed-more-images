@@ -37,8 +37,5 @@ Need help? Join the [support server](https://discord.gg/NqqqzajfK4) (NqqqzajfK4)
 ----------------------------------------------------
 
 ### Simplifying BetterDiscord:
-For a guide on making BetterDiscord easier to install and use, check out this link: 
-https://link-to-guide-on-betterdiscord <br>
+For a guide on making BetterDiscord easier to install and use, check out this link: https://gist.github.com/Knewest/ee59d3960e18e6d813c9221b54b36ab1 <br>
 <sub>If you find this challenging, please follow the regular installation procedure: https://betterdiscord.app/</sub>
-
-Replace the placeholder URLs with the actual URLs for your plugin and related images.
