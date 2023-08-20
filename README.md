@@ -1,9 +1,9 @@
-# Embed More Images Fix:
+# Locally Embed More Images Fix:
 
-<p>Take your Discord image-viewing experience to another level with the Embed More Images plugin. By automatically detecting and embedding a wider range of image formats such as this plugin dramatically enhances the user experience for the regular person and especially for developers. 
+<p>Take your Discord image-viewing experience to another level with the Embed More Images plugin. By automatically detecting and embedding a wider range of image formats such as this plugin dramatically enhances the user experience for the regular person and especially for developers.<br><br> <b>IMPORTANT:</b> Files will only embed locally. Users without the plugin will not see the preview.
 <br><br><a href="https://cdn.discordapp.com/attachments/753561208073879642/1134847376541106176/output_animation8.webp"><img src="https://cdn.discordapp.com/attachments/753561208073879642/1134847376541106176/output_animation8.webp" alt="Showcasing Embed More Images" style="cursor:pointer;"/></a><br><sub>The GFX in this example is by me (Knew). You can get the source <a href="https://twitter.com/KnewestLSEP/status/1680420950867869696">here</a>.</sub><p>
 <a href="https://github.com/Knewest/embed-more-images/releases"><img src="https://cdn.discordapp.com/attachments/753561208073879642/1110739988712271873/DownloadButtonFromGithub.webp" alt="Download from GitHub" style="cursor:pointer;"/></a> 
-<a href="Empty."><img src="https://cdn.discordapp.com/attachments/753561208073879642/1110738604780691616/DownloadButtonLatestVersion.webp" alt="Download the latest version" style="cursor:pointer;"/></a>
+<a href="https://betterdiscord.app/Download?id=1000"><img src="https://cdn.discordapp.com/attachments/753561208073879642/1110738604780691616/DownloadButtonLatestVersion.webp" alt="Download the latest version" style="cursor:pointer;"/></a>
 <br>This plugin is compatible with BetterDiscord only. I do not plan to make a console friendly version.
 
 ## Discord Format Compatibility Chart:
