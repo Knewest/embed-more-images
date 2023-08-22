@@ -19,7 +19,7 @@ Here is a table listing all the image formats Discord currently supports and tha
 |**BMP**|None.|`*.bmp`, `*.dib`, `*.rle`|Discord can but will not support this format.<br>I don't know why.|
 |**ICO**|None.|`*.ico`|Discord can but will not support this format. It's based off of BMP.|
 |**CUR**|None.|`*.cur`|Discord can but will not support this format. It's based off of BMP.|
-|**AVIF**|None.|`*.avif`|Discord can but will not support this format.<br>I don't know why.|
+|**AVIF**|None.|`*.avif`|Discord can but will not support this format, including the sequenced variant.<br>I don't know why.|
 |**JPEG XL**|None.|None.|Because Discord runs on Electron - which is Chromium based - we unfortunately lack JPEG XL support because Google backed out in supporting JPEG XL.<br><sub>Learn more: https://bugs.chromium.org/p/chromium/issues/detail?id=1178058#c406</sub>|
 |**SVG**|None.|`*.svg`|Discord can but doesn't support the embedding of SVG, most likely due to believed security risks. SVG support will be added in a future version on this plugin as an option.|
 |**HEIF**|None.|None.|Currently, if you attempt to post a `*.heic` on mobile, it will be automatically converted to a JPEG 1 in a `*.jpg` container. HEIF is not supported at all.|
