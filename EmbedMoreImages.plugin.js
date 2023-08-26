@@ -314,7 +314,7 @@ module.exports = class EmbedMoreImages {
 				if (xhr && (xhr.readyState > 1 || xhr.status > 0)) {
 					stopFakeLoading();
 				}
-			}, 10000);
+			}, 100);
 	
 			const observer = loadingBarElement && new MutationObserver(mutations => {
 				for (let mutation of mutations) {
@@ -376,11 +376,7 @@ module.exports = class EmbedMoreImages {
 	
 				xhr.onerror = () => {
 					cleanup(observer);
-					if (xhr.status === 0) {
-						reject(new Error("CORS error or network issue."));
-					} else {
-						image.src = url;
-					}
+					image.src = url;
 				};
 	
 				xhr.send();
@@ -388,7 +384,7 @@ module.exports = class EmbedMoreImages {
 				image.src = url;
 			}
 		});
-	}
+	}	
 
 
 	showImageModal(imageSrc) {
