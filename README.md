@@ -15,7 +15,7 @@ Here is a table listing all the image formats Discord currently supports and tha
 |**PNG**|`*.png`|`*.png`|Nothing noteworthy.|
 |**JPEG 1**|`*.jpg`, `*.jpeg`|`*.jpg`, `*.jpeg`, `*.jpe`, `*.jfif`, `*.jif`, `*.jfi`|Discord can but will not support these very common extentions of JPEG 1.<br>I don't know why.|
 |**WebP**|`*.webp`|`*.webp`|Although Discord will embed WebP, they will only embed static WebP-- for whatever reason, Discord can but won't support sequenced WebP. My guess is their concern for CPU usage.<br>Regardless, Embed More Images will embed sequenced WebP.|
-|**APNG**|None.|`*.apng`, `*.png`|Discord used to embed the first frame of APNG files in a `*.png` extention without stripping all APNG data, but Discord completely disabled and broke APNG support when they addressed the infamous 'acropalypse' vulnerbility.<br>Embed More Images will embed these formats, but with limited functionality because of Discord.<br><sub>Learn more: https://en.wikipedia.org/wiki/ACropalypse</sub>|
+|**APNG**|None.|`*.apng`, `*.png`|Discord used to embed the first frame of APNG files in a `*.png` extention without stripping all APNG data, but Discord completely disabled and broke APNG support when they addressed the infamous 'aCropalypse' vulnerbility.<br>Embed More Images will embed these formats, but with limited functionality because of Discord.<br><sub>Learn more: https://en.wikipedia.org/wiki/ACropalypse</sub>|
 |**BMP**|None.|`*.bmp`, `*.dib`, `*.rle`|Discord can but will not support this format.<br>I don't know why.|
 |**ICO**|None.|`*.ico`|Discord can but will not support this format. It's based off of BMP.|
 |**CUR**|None.|`*.cur`|Discord can but will not support this format. It's based off of BMP.|
