@@ -9,14 +9,6 @@
 * @website https://twitter.com/KnewestLSEP
 * @source https://github.com/Knewest/embed-more-images
 * @updateUrl https://raw.githubusercontent.com/Knewest/embed-more-images/main/EmbedMoreImages.plugin.js
-* @changelog {banner} https://cdn.discordapp.com/attachments/753561208073879642/1134847376541106176/output_animation8.webp
-* @changelog {blurb} Missed or want to know previous changelogs? Find them [here](https://github.com/Knewest/embed-more-images/releases).
-* @changelog {added.title} What I changed
-* @changelog {added.item} Replaced deprecated API functions with new ones.
-* @changelog {added.item} Began utilising the '@changelog' metadata.
-* @changelog {footer} Need help? Join my the [support server (NqqqzajfK4)](https://discord.gg/NqqqzajfK4).
-* @changelog {progress.item} I plan to add SVG support soon.
-* @changelog {progress.item} I plan to add the ability to unload/unembed an image by clicking an arrow next to the image.
 */
 
 module.exports = class EmbedMoreImages {
@@ -572,4 +564,12 @@ module.exports = class EmbedMoreImages {
 * Copyright (Boost Software License 1.0) 2023-2023 Knew
 * Link to plugin: https://github.com/Knewest/embed-more-images
 * Support server: https://discord.gg/NqqqzajfK4
+* @changelog {banner} https://cdn.discordapp.com/attachments/753561208073879642/1134847376541106176/output_animation8.webp
+* @changelog {blurb} Missed or want to know previous changelogs? Find them [here](https://github.com/Knewest/embed-more-images/releases).
+* @changelog {added.title} What I changed
+* @changelog {added.item} Replaced deprecated API functions with new ones.
+* @changelog {added.item} Began utilising the '@changelog' metadata.
+* @changelog {footer} Need help? Join my the [support server (NqqqzajfK4)](https://discord.gg/NqqqzajfK4).
+* @changelog {progress.item} I plan to add SVG support soon.
+* @changelog {progress.item} I plan to add the ability to unload/unembed an image by clicking an arrow next to the image.
 */
