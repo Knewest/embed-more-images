@@ -567,9 +567,9 @@ module.exports = class EmbedMoreImages {
 	}
 }
 
-	/**
-	* Version 1.3 of Embed More Images
-	* Copyright (Boost Software License 1.0) 2023-2023 Knew
-	* Link to plugin: https://github.com/Knewest/embed-more-images
-	* Support server: https://discord.gg/NqqqzajfK4
-	*/
+/**
+* Version 1.3 of Embed More Images
+* Copyright (Boost Software License 1.0) 2023-2023 Knew
+* Link to plugin: https://github.com/Knewest/embed-more-images
+* Support server: https://discord.gg/NqqqzajfK4
+*/
