@@ -1,15 +1,23 @@
-	/**
-	* @name Embed More Images
-	* @author Knew
-	* @description Locally embeds images that are usually unembedded in the Discord client.
-	* @version 1.2
-	* @authorId 332116671294734336
-	* @authorLink https://github.com/Knewest
-	* @invite NqqqzajfK4
-	* @website https://twitter.com/KnewestLSEP
-	* @source https://github.com/Knewest/embed-more-images
-	* @updateUrl https://raw.githubusercontent.com/Knewest/embed-more-images/main/EmbedMoreImages.plugin.js
-	*/
+/**
+* @name Embed More Images
+* @author Knew
+* @description Locally embeds images that are usually unembedded in the Discord client.
+* @version 1.3
+* @authorId 332116671294734336
+* @authorLink https://github.com/Knewest
+* @invite NqqqzajfK4
+* @website https://twitter.com/KnewestLSEP
+* @source https://github.com/Knewest/embed-more-images
+* @updateUrl https://raw.githubusercontent.com/Knewest/embed-more-images/main/EmbedMoreImages.plugin.js
+* @changelog {banner} https://cdn.discordapp.com/attachments/753561208073879642/1134847376541106176/output_animation8.webp
+* @changelog {blurb} Missed or want to know previous changelogs? Find them [here](https://github.com/Knewest/embed-more-images/releases).
+* @changelog {added.title} What I changed
+* @changelog {added.item} Replaced deprecated API functions with new ones.
+* @changelog {added.item} Began utilising the '@changelog' metadata.
+* @changelog {footer} Need help? Join my the [support server (NqqqzajfK4)](https://discord.gg/NqqqzajfK4).
+* @changelog {progress.item} I plan to add SVG support soon.
+* @changelog {progress.item} I plan to add the ability to unload/unembed an image by clicking an arrow next to the image.
+*/
 
 module.exports = class EmbedMoreImages {
 		constructor() {
@@ -23,21 +31,21 @@ module.exports = class EmbedMoreImages {
 			};
 		}
 
-		load() {
-			this.settings.enableFormatExtension = BdApi.loadData("EmbedMoreImages", "enableFormatExtension") || true;
-		}
+	load() {
+		this.settings.enableFormatExtension = BdApi.Data.load("EmbedMoreImages", "enableFormatExtension") || true;
+	}
 
-		unload() {
-			BdApi.saveData("EmbedMoreImages", "enableFormatExtension", this.settings.enableFormatExtension);
-		}
+	unload() {
+		BdApi.Data.save("EmbedMoreImages", "enableFormatExtension", this.settings.enableFormatExtension);
+	}
 
-		createHTML(content, classes = "", styles = "") {
-			let element = document.createElement('div');
-			element.innerHTML = content.trim();
-			element.className = classes;
-			element.style = styles;
-			return element;
-		}
+	createHTML(content, classes = "", styles = "") {
+		let element = document.createElement('div');
+		element.innerHTML = content.trim();
+		element.className = classes;
+		element.style = styles;
+		return element;
+	}
 
 	getSettingsPanel() {
 		let panel = this.createHTML(`<h2>General:</h2>`, '', "overflow: auto; padding: 16px; background-color: #36393f; color: #ffffff; font-size: 16px;");
@@ -50,10 +58,10 @@ module.exports = class EmbedMoreImages {
 		`, "display: flex; align-items: center;");
 
 		let checkbox = checkboxContainer.firstChild;
-		checkbox.checked = BdApi.loadData("EmbedMoreImages", "enableFormatExtension");
+		checkbox.checked = BdApi.Data.load("EmbedMoreImages", "enableFormatExtension");
 		checkbox.addEventListener('change', () => {
 			this.settings.enableFormatExtension = checkbox.checked; 
-			BdApi.saveData("EmbedMoreImages", "enableFormatExtension", this.settings.enableFormatExtension);
+			BdApi.Data.save("EmbedMoreImages", "enableFormatExtension", this.settings.enableFormatExtension);
 			const extensionDivs = document.querySelectorAll('.imgExtension-EmbedMoreImages');
 			extensionDivs.forEach(div => {
 				div.style.display = this.settings.enableFormatExtension ? 'block' : 'none';
@@ -560,7 +568,7 @@ module.exports = class EmbedMoreImages {
 }
 
 	/**
-	* Version 1.2 of Embed More Images
+	* Version 1.3 of Embed More Images
 	* Copyright (Boost Software License 1.0) 2023-2023 Knew
 	* Link to plugin: https://github.com/Knewest/embed-more-images
 	* Support server: https://discord.gg/NqqqzajfK4
