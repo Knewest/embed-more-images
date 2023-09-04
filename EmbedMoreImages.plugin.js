@@ -389,7 +389,7 @@ module.exports = class EmbedMoreImages {
 
 	showImageModal(imageSrc) {
 	const modal = this.createHTML(`
-		<div class="layerContainer-2lfOPe layerContainer-EmbedMoreImages" style="z-index: 3002;">
+		<div class="layerContainer-2lfOPe layerContainer-EmbedMoreImages" style="z-index: 1002;">
 			<div class="backdrop-2ByYRN withLayer-2VVmpp" style="opacity: 0; background: var(--black-500); transition: opacity 0.35s;"></div>
 			<div class="layer-fP3xEz">
 			<div class="focusLock-bHVOlV" role="dialog" aria-label="Image" tabindex="-1" aria-modal="true">
@@ -405,6 +405,13 @@ module.exports = class EmbedMoreImages {
 			</div>
 	`);
 
+	const titleBar = document.querySelector('.titleBar-1it3bQ');
+
+	if (titleBar) {
+	  titleBar.style.zIndex = '1001';
+	} else {
+	  console.error('Element ".titleBar-1it3bQ" not found for Embed More Images. Please join the support server and report this. Support server link: https://discord.gg/NqqqzajfK4');
+	}
 
 	const parentElement = document.querySelector('.appMount-2yBXZl .notAppAsidePanel-3yzkgB') || document.body;
 	parentElement.prepend(modal);
@@ -564,8 +571,10 @@ module.exports = class EmbedMoreImages {
 * Copyright (Boost Software License 1.0) 2023-2023 Knew
 * Link to plugin: https://github.com/Knewest/embed-more-images
 * Support server: https://discord.gg/NqqqzajfK4
+*
 * @changelog {banner} https://cdn.discordapp.com/attachments/753561208073879642/1134847376541106176/output_animation8.webp
 * @changelog {blurb} Missed or want to know previous changelogs? Find them [here](https://github.com/Knewest/embed-more-images/releases).
+* @changelog {fixed.item} The context menu now appears above the image instead of under everything.
 * @changelog {added.title} What I changed
 * @changelog {added.item} Replaced deprecated API functions with new ones.
 * @changelog {added.item} Began utilising the '@changelog' metadata.
