@@ -397,7 +397,7 @@ module.exports = class EmbedMoreImages {
 				<div class="wrapper-rWtXPd">
 					<div class="imageWrapper-oMkQl4 image-36HiZc" style="width: auto; height: auto; display: inline-flex;justify-content: space-around;align-content: space-between">
 					<img alt="Image" src="${imageSrc}" class="imgEmbedMoreImages" style="max-width: 80%; max-height: 80%; width: auto; height: auto; transform: scale(1); transition: transform 0.35s;"></div>
-					<a class="anchor-1X4H4q anchorUnderlineOnHover-wiZFZ_ downloadLink-3cavAH" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="position: absolute; bottom: 0;">Open in Browser</a>
+					<a class="anchor-1X4H4q anchorUnderlineOnHover-wiZFZ_ downloadLink-3cavAH" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="position: absolute; bottom: 0; left: 150px;">Open in Browser</a>
 				</div>
 				</div>
 			</div>
