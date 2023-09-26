@@ -2,7 +2,7 @@
 * @name Embed More Images
 * @author Knew
 * @description Locally embeds images that are usually unembedded in the Discord client.
-* @version 1.4
+* @version 1.5
 * @authorId 332116671294734336
 * @authorLink https://github.com/Knewest
 * @invite NqqqzajfK4
@@ -72,7 +72,8 @@ module.exports = class EmbedMoreImages {
 			if (index >= links.length) return;
 			const link = links[index];
 			const href = link.getAttribute('href');
-			if (imgExtensions.some(ext => href.endsWith(ext))) {
+			const hrefWithoutQuery = href.split(/[?#]/)[0];
+			if (imgExtensions.some(ext => hrefWithoutQuery.endsWith(ext))) {
 		if (index >= links.length) {
 			return;
 		}
@@ -134,7 +135,7 @@ module.exports = class EmbedMoreImages {
 		if (clickableWrapper) {
 	const imgExtension = document.createElement('span');
 	imgExtension.className = "altText-EmbedMoreImages imgExtension-EmbedMoreImages";
-			const matchingExtension = imgExtensions.find((ext) => href.endsWith(ext));
+		const matchingExtension = imgExtensions.find((ext) => hrefWithoutQuery.endsWith(ext));
 			if (matchingExtension) {
 			imgExtension.textContent = matchingExtension.slice(1).toUpperCase();
 			imgExtension.style.display = this.settings.enableFormatExtension ? 'inline-block' : 'none';
@@ -567,14 +568,14 @@ module.exports = class EmbedMoreImages {
 }
 
 /**
-* Version 1.4 of 'Embed More Images'
+* Version 1.5 of 'Embed More Images'
 * Copyright (Boost Software License 1.0) 2023-2023 Knew
 * Link to plugin: https://github.com/Knewest/embed-more-images
 * Support server: https://discord.gg/NqqqzajfK4
 *
 * @changelog {banner} https://cdn.discordapp.com/attachments/753561208073879642/1134847376541106176/output_animation8.webp
 * @changelog {blurb} Missed or want to know previous changelogs? Find them [here](https://github.com/Knewest/embed-more-images/releases).
-* @changelog {fixed.item} The modal is not correctly positioned. Sorry this took so long to address.
+* @changelog {fixed.item} Discord broke the embedding. This is fixed now.
 * @changelog {added.title} What I changed
 * @changelog {added.item} Functionally? Nothing.
 * @changelog {footer} Need help? Join my the [support server (NqqqzajfK4)](https://discord.gg/NqqqzajfK4).
