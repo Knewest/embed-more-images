@@ -66,7 +66,7 @@ module.exports = class EmbedMoreImages {
 
 	embedImagesInContainer(container) {
 		const imgExtensions = ['.webp', '.apng', '.png', '.jpe', '.jfif', '.jif', '.jfi', '.avif', '.bmp', '.dib', '.rle', '.ico', '.cur'].map(ext => [ext, ext.toUpperCase()]).flat();
-		const links = container.querySelectorAll('.fileNameLink-1odyIc');
+		const links = container.querySelectorAll('.fileNameLink__995d3');
 		
 		const embedImageRecursive = (index) => {
 			if (index >= links.length) return;
@@ -80,9 +80,9 @@ module.exports = class EmbedMoreImages {
 
 		const hrefWithoutQuery = href.split(/[?#]/)[0];
 		if (imgExtensions.some((ext) => hrefWithoutQuery.endsWith(ext))) {
-			const parentContainer = link.closest('.nonMediaAttachmentsContainer-3s1dgm');
+			const parentContainer = link.closest('.nonMediaAttachmentsContainer_ca7b77');
 			if (parentContainer) {
-				const existingImages = parentContainer.querySelectorAll('.imageContainer-10XenG.imageContainer-EmbedMoreImages.container-2sjPya .originalLink-Azwuo9');
+				const existingImages = parentContainer.querySelectorAll('.imageContainer__04362.imageContainer-EmbedMoreImages.container_dbadf5 .originalLink__94d5d');
 				for (let i = 0; i < existingImages.length; i++) {
 				if (existingImages[i].href === href) {
 					embedImageRecursive(index + 1);
@@ -93,11 +93,11 @@ module.exports = class EmbedMoreImages {
 		}
 
 	const newContainer = document.createElement('div');
-	newContainer.className = "imageContainer-10XenG imageContainer-EmbedMoreImages container-2sjPya";
+	newContainer.className = "imageContainer__04362 imageContainer-EmbedMoreImages container_dbadf5";
 	newContainer.style = "border-radius: 8px; overflow: hidden; position: relative;";
 		
 		const clickableWrapper = document.createElement('div');
-		clickableWrapper.className = "clickableWrapper-2WTAkL";
+		clickableWrapper.className = "clickableWrapper__64072";
 		clickableWrapper.style = "";
 		clickableWrapper.tabIndex = "0";
 		clickableWrapper.setAttribute('aria-label', 'Image');
@@ -131,7 +131,7 @@ module.exports = class EmbedMoreImages {
 	let observer = new MutationObserver((mutations) => {
 	for (let mutation of mutations) {
 		if (mutation.type === 'childList') {
-		const clickableWrapper = mutation.target.querySelector('.clickableWrapper-2WTAkL');
+		const clickableWrapper = mutation.target.querySelector('.clickableWrapper__64072');
 		if (clickableWrapper) {
 	const imgExtension = document.createElement('span');
 	imgExtension.className = "altText-EmbedMoreImages imgExtension-EmbedMoreImages";
@@ -163,7 +163,7 @@ module.exports = class EmbedMoreImages {
 	container.appendChild(newContainer); 
 
 	const linkElm = document.createElement('a');
-		linkElm.className = "originalLink-Azwuo9";
+		linkElm.className = "originalLink__94d5d";
 		linkElm.href = href;
 		linkElm.dataset.role = "img";
 		linkElm.style = "max-height: 350px; max-width: 550px; border-radius: 8px; overflow: hidden;";
@@ -173,7 +173,7 @@ module.exports = class EmbedMoreImages {
 	});
 
 	const wrapper = document.createElement('div');
-		wrapper.className = "clickableWrapper-2WTAkL";
+		wrapper.className = "clickableWrapper__64072";
 		wrapper.tabIndex = "0";
 		wrapper.setAttribute('aria-label', 'Image');
 		wrapper.setAttribute('aria-describedby', 'uid_4');
@@ -216,7 +216,7 @@ module.exports = class EmbedMoreImages {
 		newContainer.appendChild(linkElm);
 		newContainer.appendChild(wrapper);
 
-		const oldContainer = link.closest('.nonMediaAttachmentItem-1e7YaR');
+		const oldContainer = link.closest('.nonMediaAttachmentItem__10b1b');
 		const showEmbeddedImage = (img, linkElm, wrapper, newContainer, oldContainer) => {
 			img.src = link.getAttribute('href');
 			newContainer.appendChild(linkElm);
@@ -225,21 +225,21 @@ module.exports = class EmbedMoreImages {
 			if (oldContainer && oldContainer.parentNode) {
 				oldContainer.style.display = 'none';
 				loadingContainer.style.display = 'none';
-				const spoilerInnerContainer = oldContainer.querySelector('.spoilerInnerContainer-1P_w0A');
+				const spoilerInnerContainer = oldContainer.querySelector('.spoilerInnerContainer__9ef22');
 		if (spoilerInnerContainer) {
 		const spoilerContent = document.createElement('div');
-		spoilerContent.className = "spoilerContent-32CqO- spoilerContainer-1Dl06W hidden-2lQZ5q";
+		spoilerContent.className = "spoilerContent__37bfa spoilerContainer_b653f1 hidden_f44e41";
 		spoilerContent.setAttribute('aria-label', 'Spoiler');
 		spoilerContent.setAttribute('aria-expanded', 'false');
 		spoilerContent.setAttribute('role', 'button');
 		spoilerContent.setAttribute('tabindex', '0');
 	
 		const spoilerWarning = document.createElement('div');
-		spoilerWarning.className = "spoilerWarning-1JN1Ot obscureWarning-2jkWgh";
+		spoilerWarning.className = "spoilerWarning_d02e2d obscureWarning_f6d53e";
 		spoilerWarning.innerHTML = 'Spoiler';
 	
 		const innerContainer = document.createElement('div');
-		innerContainer.className = "spoilerInnerContainer-1P_w0A";
+		innerContainer.className = "spoilerInnerContainer__9ef22";
 		innerContainer.style.pointerEvents = 'none';
 	
 		const spoilerImage = newContainer.querySelector('.lazyImg-EmbedMoreImages');
@@ -390,15 +390,15 @@ module.exports = class EmbedMoreImages {
 
 	showImageModal(imageSrc) {
 	const modal = this.createHTML(`
-		<div class="layerContainer-2lfOPe layerContainer-EmbedMoreImages" style="z-index: 1002;">
-			<div class="backdrop-2ByYRN withLayer-2VVmpp" style="opacity: 0; background: var(--black-500); transition: opacity 0.35s;"></div>
-			<div class="layer-fP3xEz">
-			<div class="focusLock-bHVOlV" role="dialog" aria-label="Image" tabindex="-1" aria-modal="true">
-				<div class="modal-3Crloo root-1CAIjD fullscreenOnMobile-2971EC rootWithShadow-2hdL2J" style="opacity: 0; transform: scale(0); transition: transform 0.15s;">
-				<div class="wrapper-rWtXPd">
-					<div class="imageWrapper-oMkQl4 image-36HiZc" style="width: auto; height: auto; display: inline-flex;justify-content: space-around;align-content: space-between">
+		<div class="layerContainer_d5a653 layerContainer-EmbedMoreImages" style="z-index: 1002;">
+			<div class="backdrop__7e89b withLayer__1fe9d" style="opacity: 0; background: var(--black-500); transition: opacity 0.35s;"></div>
+			<div class="layer_ad604d">
+			<div class="focusLock__10aa5" role="dialog" aria-label="Image" tabindex="-1" aria-modal="true">
+				<div class="modal_d2e7a7 root_a28985 fullscreenOnMobile__96797 rootWithShadow__073a7" style="opacity: 0; transform: scale(0); transition: transform 0.15s;">
+				<div class="wrapper__8e1d7">
+					<div class="imageWrapper_fd6587 image__79a29" style="width: auto; height: auto; display: inline-flex;justify-content: space-around;align-content: space-between">
 					<img alt="Image" src="${imageSrc}" class="imgEmbedMoreImages" style="max-width: 80%; max-height: 80%; width: auto; height: auto; transform: scale(1); transition: transform 0.35s;"></div>
-					<a class="anchor-1X4H4q anchorUnderlineOnHover-wiZFZ_ downloadLink-3cavAH" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="position: absolute; bottom: 0; left: 150px;">Open in Browser</a>
+					<a class="anchor_c8ddc0 anchorUnderlineOnHover__78236 downloadLink_e5ebe9" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="position: absolute; bottom: 0; left: 150px;">Open in Browser</a>
 				</div>
 				</div>
 			</div>
@@ -406,20 +406,20 @@ module.exports = class EmbedMoreImages {
 			</div>
 	`);
 
-	const titleBar = document.querySelector('.titleBar-1it3bQ');
+	const titleBar = document.querySelector('.titleBar__01af6');
 
 	if (titleBar) {
 	  titleBar.style.zIndex = '1001';
 	} else {
-	  console.error('Element ".titleBar-1it3bQ" not found for Embed More Images. Please join the support server and report this. Support server link: https://discord.gg/NqqqzajfK4');
+	  console.error('Element ".titleBar__01af6" not found for Embed More Images. Please join the support server and report this. Support server link: https://discord.gg/NqqqzajfK4');
 	}
 
-	const parentElement = document.querySelector('.appMount-2yBXZl .notAppAsidePanel-3yzkgB') || document.body;
+	const parentElement = document.querySelector('.appMount_fae9dd .notAppAsidePanel__9d124') || document.body;
 	parentElement.prepend(modal);
 	
-	const backdrop = modal.querySelector(".backdrop-2ByYRN");
+	const backdrop = modal.querySelector(".backdrop__7e89b");
 	backdrop.addEventListener('click', () => {
-		const modalDialog = modal.querySelector('.modal-3Crloo');
+		const modalDialog = modal.querySelector('.modal_d2e7a7');
 		const imgElement = modal.querySelector('.imgEmbedMoreImages');
 	
 		imgElement.style.transform = 'scale(0)';
@@ -437,7 +437,7 @@ module.exports = class EmbedMoreImages {
 		}, 150);
 	
 		setTimeout(() => {
-			const layer = modal.querySelector('.layer-fP3xEz'); 
+			const layer = modal.querySelector('.layer_ad604d'); 
 			layer.remove(); 
 		}, 100);
 	
@@ -454,13 +454,13 @@ module.exports = class EmbedMoreImages {
 	backdrop.style.opacity = '0.85';
 
 	setTimeout(() => {
-		const modalDialog = modal.querySelector('.modal-3Crloo');
+		const modalDialog = modal.querySelector('.modal_d2e7a7');
 		modalDialog.style.opacity = '1';
 		modalDialog.style.transform = 'scale(1)';
 	}, 10);
 
 	window.addEventListener('beforeunload', () => {
-		const modalDialog = modal.querySelector('.modal-3Crloo');
+		const modalDialog = modal.querySelector('.modal_d2e7a7');
 		modal.style.opacity = '0';
 		modalDialog.style.transform = 'scale(0)';
 		backdrop.style.opacity = '0';
@@ -468,7 +468,7 @@ module.exports = class EmbedMoreImages {
 	}
 
 	observeContainers() {
-		const containers = document.querySelectorAll('.nonMediaAttachmentItem-1e7YaR');
+		const containers = document.querySelectorAll('.nonMediaAttachmentItem__10b1b');
 		containers.forEach((container) => {
 		this.embedImagesInContainer(container);
 		});
@@ -495,7 +495,7 @@ module.exports = class EmbedMoreImages {
 				return;
 				}
 
-				const containers = node.classList.contains('nonMediaAttachmentItem-1e7YaR') ? [node] : node.querySelectorAll('.nonMediaAttachmentItem-1e7YaR');
+				const containers = node.classList.contains('nonMediaAttachmentItem__10b1b') ? [node] : node.querySelectorAll('.nonMediaAttachmentItem__10b1b');
 				containers.forEach((container) => this.embedImagesInContainer(container));
 			}
 			});
@@ -538,7 +538,7 @@ module.exports = class EmbedMoreImages {
 			this.extensionObserver = null;
 		}
 	
-		const elements = document.querySelectorAll('.nonMediaAttachmentItem-1e7YaR');
+		const elements = document.querySelectorAll('.nonMediaAttachmentItem__10b1b');
 
 		elements.forEach(element => {
 			element.style.display = 'block';
@@ -559,7 +559,7 @@ module.exports = class EmbedMoreImages {
 			img.removeAttribute('src');
 		});
 	
-		document.querySelectorAll('.layerContainer-2lfOPe.layerContainer-EmbedMoreImages').forEach(modal => {
+		document.querySelectorAll('.layerContainer_d5a653.layerContainer-EmbedMoreImages').forEach(modal => {
 			modal.parentNode.removeChild(modal);
 		});
 
