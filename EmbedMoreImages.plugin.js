@@ -2,7 +2,7 @@
 * @name Embed More Images
 * @author Knew
 * @description Locally embeds images that are usually unembedded in the Discord client.
-* @version 1.5
+* @version 1.6
 * @authorId 332116671294734336
 * @authorLink https://github.com/Knewest
 * @invite NqqqzajfK4
@@ -568,7 +568,7 @@ module.exports = class EmbedMoreImages {
 }
 
 /**
-* Version 1.5 of 'Embed More Images'
+* Version 1.6 of 'Embed More Images'
 * Copyright (Boost Software License 1.0) 2023-2023 Knew
 * Link to plugin: https://github.com/Knewest/embed-more-images
 * Support server: https://discord.gg/NqqqzajfK4
