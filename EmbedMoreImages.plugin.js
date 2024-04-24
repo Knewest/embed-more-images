@@ -2,7 +2,7 @@
 * @name Embed More Images
 * @author Knew
 * @description Locally embeds images that are usually unembedded in the Discord client.
-* @version 1.7
+* @version 1.8
 * @authorId 332116671294734336
 * @authorLink https://github.com/Knewest
 * @invite NqqqzajfK4
@@ -216,7 +216,7 @@ const wrapper = document.createElement('div');
 	newContainer.appendChild(linkElm);
 	newContainer.appendChild(wrapper);
 
-	const oldContainer = link.closest('.nonMediaAttachmentItem__80bd4');
+	const oldContainer = link.closest('.nonVisualMediaItemContainer__81ce5');
 	const showEmbeddedImage = (img, linkElm, wrapper, newContainer, oldContainer) => {
 		img.src = link.getAttribute('href');
 		newContainer.appendChild(linkElm);
@@ -468,7 +468,7 @@ window.addEventListener('beforeunload', () => {
 }
 
 observeContainers() {
-	const containers = document.querySelectorAll('.nonMediaAttachmentItem__80bd4');
+	const containers = document.querySelectorAll('.nonVisualMediaItemContainer__81ce5');
 	containers.forEach((container) => {
 	this.embedImagesInContainer(container);
 	});
@@ -495,7 +495,7 @@ this.observerStart = new MutationObserver((mutations) => {
 			return;
 			}
 
-			const containers = node.classList.contains('nonMediaAttachmentItem__80bd4') ? [node] : node.querySelectorAll('.nonMediaAttachmentItem__80bd4');
+			const containers = node.classList.contains('nonVisualMediaItemContainer__81ce5') ? [node] : node.querySelectorAll('.nonVisualMediaItemContainer__81ce5');
 			containers.forEach((container) => this.embedImagesInContainer(container));
 		}
 		});
@@ -538,7 +538,7 @@ stop() {
 		this.extensionObserver = null;
 	}
 
-	const elements = document.querySelectorAll('.nonMediaAttachmentItem__80bd4');
+	const elements = document.querySelectorAll('.nonVisualMediaItemContainer__81ce5');
 
 	elements.forEach(element => {
 		element.style.display = 'block';
@@ -568,8 +568,8 @@ stop() {
 }
 
 /**
-* Version 1.7 of 'Embed More Images'.
-* Copyright (Boost Software License 1.0) 2023-2023 Knew
+* Version 1.8 of 'Embed More Images'.
+* Copyright (Boost Software License 1.0) 2023-2024 Knew
 * Link to plugin: https://github.com/Knewest/Embed-More-Images
 * Support server: https://discord.gg/NqqqzajfK4
 *
