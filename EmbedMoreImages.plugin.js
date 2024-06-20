@@ -2,7 +2,7 @@
 * @name Embed More Images
 * @author Knew
 * @description Locally embeds images that are usually unembedded in the Discord client.
-* @version 1.8
+* @version 1.9
 * @authorId 332116671294734336
 * @authorLink https://github.com/Knewest
 * @invite NqqqzajfK4
@@ -66,7 +66,7 @@ getSettingsPanel() {
 
 embedImagesInContainer(container) {
 	const imgExtensions = ['.webp', '.apng', '.png', '.jpe', '.jfif', '.jif', '.jfi', '.avif', '.bmp', '.dib', '.rle', '.ico', '.cur'].map(ext => [ext, ext.toUpperCase()]).flat();
-	const links = container.querySelectorAll('.fileNameLink__6e8b0');
+	const links = container.querySelectorAll('.fileNameLink_a4623d');
 	
 	const embedImageRecursive = (index) => {
 		if (index >= links.length) return;
@@ -82,7 +82,7 @@ embedImagesInContainer(container) {
 	if (imgExtensions.some((ext) => hrefWithoutQuery.endsWith(ext))) {
 		const parentContainer = link.closest('.nonMediaAttachmentsContainer__912df');
 		if (parentContainer) {
-			const existingImages = parentContainer.querySelectorAll('.imageContainer__1b5e9.imageContainer-EmbedMoreImages.container__62863 .originalLink__0d99e');
+			const existingImages = parentContainer.querySelectorAll('.imageContainer_cf58b5.imageContainer-EmbedMoreImages.container_b558d0 .originalLink__0d99e');
 			for (let i = 0; i < existingImages.length; i++) {
 			if (existingImages[i].href === href) {
 				embedImageRecursive(index + 1);
@@ -93,7 +93,7 @@ embedImagesInContainer(container) {
 	}
 
 const newContainer = document.createElement('div');
-newContainer.className = "imageContainer__1b5e9 imageContainer-EmbedMoreImages container__62863";
+newContainer.className = "imageContainer_cf58b5 imageContainer-EmbedMoreImages container_b558d0";
 newContainer.style = "border-radius: 8px; overflow: hidden; position: relative;";
 	
 	const clickableWrapper = document.createElement('div');
@@ -216,7 +216,7 @@ const wrapper = document.createElement('div');
 	newContainer.appendChild(linkElm);
 	newContainer.appendChild(wrapper);
 
-	const oldContainer = link.closest('.nonVisualMediaItemContainer__81ce5');
+	const oldContainer = link.closest('.nonVisualMediaItemContainer_df7417');
 	const showEmbeddedImage = (img, linkElm, wrapper, newContainer, oldContainer) => {
 		img.src = link.getAttribute('href');
 		newContainer.appendChild(linkElm);
@@ -225,21 +225,21 @@ const wrapper = document.createElement('div');
 		if (oldContainer && oldContainer.parentNode) {
 			oldContainer.style.display = 'none';
 			loadingContainer.style.display = 'none';
-			const spoilerInnerContainer = oldContainer.querySelector('.spoilerInnerContainer_a02052');
+			const spoilerInnerContainer = oldContainer.querySelector('.spoilerInnerContainer_a3d0f7');
 	if (spoilerInnerContainer) {
 	const spoilerContent = document.createElement('div');
-	spoilerContent.className = "spoilerContent__383f3 spoilerContainer__89762 hidden_f44e41";
+	spoilerContent.className = "spoilerContent_a3d0f7 spoilerContainer_a3d0f7 hidden_a3d0f7";
 	spoilerContent.setAttribute('aria-label', 'Spoiler');
 	spoilerContent.setAttribute('aria-expanded', 'false');
 	spoilerContent.setAttribute('role', 'button');
 	spoilerContent.setAttribute('tabindex', '0');
 
 	const spoilerWarning = document.createElement('div');
-	spoilerWarning.className = "spoilerWarning_d68130 obscureWarning_a0d881";
+	spoilerWarning.className = "spoilerWarning_a3d0f7 obscureWarning_a3d0f7";
 	spoilerWarning.innerHTML = 'Spoiler';
 
 	const innerContainer = document.createElement('div');
-	innerContainer.className = "spoilerInnerContainer_a02052";
+	innerContainer.className = "spoilerInnerContainer_a3d0f7";
 	innerContainer.style.pointerEvents = 'none';
 
 	const spoilerImage = newContainer.querySelector('.lazyImg-EmbedMoreImages');
@@ -390,15 +390,15 @@ preloadImage(img, url, onProgress, loadingBarElement) {
 
 showImageModal(imageSrc) {
 const modal = this.createHTML(`
-	<div class="layerContainer_a2fcaa layerContainer-EmbedMoreImages" style="z-index: 1002;">
+	<div class="layerContainer_cd0de5 layerContainer-EmbedMoreImages" style="z-index: 1002;">
 		<div class="backdrop__1a911 withLayer__29ace" style="opacity: 0; background: var(--black-500); transition: opacity 0.35s;"></div>
-		<div class="layer_c14d31">
-		<div class="focusLock__28507" role="dialog" aria-label="Image" tabindex="-1" aria-modal="true">
-			<div class="modal_d2e7a7 root_a28985 fullscreenOnMobile__05784 rootWithShadow_d20cd6" style="opacity: 0; transform: scale(0); transition: transform 0.15s;">
-			<div class="wrapper__4350e">
-				<div class="imageWrapper__178ee image__1dc70" style="width: auto; height: auto; display: inline-flex;justify-content: space-around;align-content: space-between">
+		<div class="layer_c9e2da">
+		<div class="focusLock_f9a4c9" role="dialog" aria-label="Image" tabindex="-1" aria-modal="true">
+			<div class="modal_aee8c6 root_f9a4c9 fullscreenOnMobile_f9a4c9 rootWithShadow_f9a4c9" style="opacity: 0; transform: scale(0); transition: transform 0.15s;">
+			<div class="wrapper_aa8ea9">
+				<div class="imageWrapper__178ee image_aee8c6" style="width: auto; height: auto; display: inline-flex;justify-content: space-around;align-content: space-between">
 				<img alt="Image" src="${imageSrc}" class="imgEmbedMoreImages" style="max-width: 80%; max-height: 80%; width: auto; height: auto; transform: scale(1); transition: transform 0.35s;"></div>
-				<a class="anchor_c8ddc0 anchorUnderlineOnHover__03b72 downloadLink_d6df2d" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="position: absolute; bottom: 0; left: 150px;">Open in Browser</a>
+				<a class="anchor_af404b anchorUnderlineOnHover_af404b downloadLink_aa8ea9" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="position: absolute; bottom: 0; left: 150px;">Open in Browser</a>
 			</div>
 			</div>
 		</div>
@@ -406,20 +406,20 @@ const modal = this.createHTML(`
 		</div>
 `);
 
-const titleBar = document.querySelector('.titleBar__710b0');
+const titleBar = document.querySelector('.titleBar_a934d8');
 
 if (titleBar) {
   titleBar.style.zIndex = '1001';
 } else {
-  console.error('Element ".titleBar__710b0" not found for Embed More Images. Please join the support server and report this. Support server link: https://discord.gg/NqqqzajfK4');
+  console.error('Element ".titleBar_a934d8" not found for Embed More Images. Please join the support server and report this. Support server link: https://discord.gg/NqqqzajfK4');
 }
 
-const parentElement = document.querySelector('.appMount_c99875 .notAppAsidePanel__95814') || document.body;
+const parentElement = document.querySelector('.appMount_ea7e65 .notAppAsidePanel_bd26cc') || document.body;
 parentElement.prepend(modal);
 
 const backdrop = modal.querySelector(".backdrop__1a911");
 backdrop.addEventListener('click', () => {
-	const modalDialog = modal.querySelector('.modal_d2e7a7');
+	const modalDialog = modal.querySelector('.modal_aee8c6');
 	const imgElement = modal.querySelector('.imgEmbedMoreImages');
 
 	imgElement.style.transform = 'scale(0)';
@@ -437,7 +437,7 @@ backdrop.addEventListener('click', () => {
 	}, 150);
 
 	setTimeout(() => {
-		const layer = modal.querySelector('.layer_c14d31'); 
+		const layer = modal.querySelector('.layer_c9e2da'); 
 		layer.remove(); 
 	}, 100);
 
@@ -454,13 +454,13 @@ modal.style.opacity = '1';
 backdrop.style.opacity = '0.85';
 
 setTimeout(() => {
-	const modalDialog = modal.querySelector('.modal_d2e7a7');
+	const modalDialog = modal.querySelector('.modal_aee8c6');
 	modalDialog.style.opacity = '1';
 	modalDialog.style.transform = 'scale(1)';
 }, 10);
 
 window.addEventListener('beforeunload', () => {
-	const modalDialog = modal.querySelector('.modal_d2e7a7');
+	const modalDialog = modal.querySelector('.modal_aee8c6');
 	modal.style.opacity = '0';
 	modalDialog.style.transform = 'scale(0)';
 	backdrop.style.opacity = '0';
@@ -468,7 +468,7 @@ window.addEventListener('beforeunload', () => {
 }
 
 observeContainers() {
-	const containers = document.querySelectorAll('.nonVisualMediaItemContainer__81ce5');
+	const containers = document.querySelectorAll('.nonVisualMediaItemContainer_df7417');
 	containers.forEach((container) => {
 	this.embedImagesInContainer(container);
 	});
@@ -495,7 +495,7 @@ this.observerStart = new MutationObserver((mutations) => {
 			return;
 			}
 
-			const containers = node.classList.contains('nonVisualMediaItemContainer__81ce5') ? [node] : node.querySelectorAll('.nonVisualMediaItemContainer__81ce5');
+			const containers = node.classList.contains('nonVisualMediaItemContainer_df7417') ? [node] : node.querySelectorAll('.nonVisualMediaItemContainer_df7417');
 			containers.forEach((container) => this.embedImagesInContainer(container));
 		}
 		});
@@ -538,7 +538,7 @@ stop() {
 		this.extensionObserver = null;
 	}
 
-	const elements = document.querySelectorAll('.nonVisualMediaItemContainer__81ce5');
+	const elements = document.querySelectorAll('.nonVisualMediaItemContainer_df7417');
 
 	elements.forEach(element => {
 		element.style.display = 'block';
@@ -559,7 +559,7 @@ stop() {
 		img.removeAttribute('src');
 	});
 
-	document.querySelectorAll('.layerContainer_a2fcaa.layerContainer-EmbedMoreImages').forEach(modal => {
+	document.querySelectorAll('.layerContainer_cd0de5.layerContainer-EmbedMoreImages').forEach(modal => {
 		modal.parentNode.removeChild(modal);
 	});
 
@@ -568,7 +568,7 @@ stop() {
 }
 
 /**
-* Version 1.8 of 'Embed More Images'.
+* Version 1.9 of 'Embed More Images'.
 * Copyright (Boost Software License 1.0) 2023-2024 Knew
 * Link to plugin: https://github.com/Knewest/Embed-More-Images
 * Support server: https://discord.gg/NqqqzajfK4
