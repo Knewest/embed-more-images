@@ -2,7 +2,7 @@
 * @name Embed More Images
 * @author Knew
 * @description Locally embeds images that are usually unembedded in the Discord client.
-* @version 1.9
+* @version 1.10
 * @authorId 332116671294734336
 * @authorLink https://github.com/Knewest
 * @invite NqqqzajfK4
@@ -48,7 +48,7 @@ getSettingsPanel() {
 		<input type="checkbox" id="imgExtension" name="imgExtension" style="margin-right: 8px;">
 		<label htmlFor="imgExtension">Enable format extension indicator</label>
 	`, "display: flex; align-items: center;");
-
+	
 	let checkbox = checkboxContainer.firstChild;
 	checkbox.checked = BdApi.Data.load("EmbedMoreImages", "enableFormatExtension");
 	checkbox.addEventListener('change', () => {
@@ -82,7 +82,7 @@ embedImagesInContainer(container) {
 	if (imgExtensions.some((ext) => hrefWithoutQuery.endsWith(ext))) {
 		const parentContainer = link.closest('.nonMediaAttachmentsContainer__912df');
 		if (parentContainer) {
-			const existingImages = parentContainer.querySelectorAll('.imageContainer_cf58b5.imageContainer-EmbedMoreImages.container_b558d0 .originalLink__0d99e');
+			const existingImages = parentContainer.querySelectorAll('.imageContainer_cf58b5.imageContainer-EmbedMoreImages.container_b558d0 .originalLink_d4597d');
 			for (let i = 0; i < existingImages.length; i++) {
 			if (existingImages[i].href === href) {
 				embedImageRecursive(index + 1);
@@ -97,7 +97,7 @@ newContainer.className = "imageContainer_cf58b5 imageContainer-EmbedMoreImages c
 newContainer.style = "border-radius: 8px; overflow: hidden; position: relative;";
 	
 	const clickableWrapper = document.createElement('div');
-	clickableWrapper.className = "clickableWrapper__2d2ea";
+	clickableWrapper.className = "clickableWrapper_d4597d";
 	clickableWrapper.style = "";
 	clickableWrapper.tabIndex = "0";
 	clickableWrapper.setAttribute('aria-label', 'Image');
@@ -131,7 +131,7 @@ newContainer.style = "border-radius: 8px; overflow: hidden; position: relative;"
 let observer = new MutationObserver((mutations) => {
 for (let mutation of mutations) {
 	if (mutation.type === 'childList') {
-	const clickableWrapper = mutation.target.querySelector('.clickableWrapper__2d2ea');
+	const clickableWrapper = mutation.target.querySelector('.clickableWrapper_d4597d');
 	if (clickableWrapper) {
 const imgExtension = document.createElement('span');
 imgExtension.className = "altText-EmbedMoreImages imgExtension-EmbedMoreImages";
@@ -163,28 +163,29 @@ observer.observe(newContainer, {childList: true});
 container.appendChild(newContainer); 
 
 const linkElm = document.createElement('a');
-	linkElm.className = "originalLink__0d99e";
+	linkElm.className = "originalLink_d4597d";
 	linkElm.href = href;
 	linkElm.dataset.role = "img";
 	linkElm.style = "max-height: 350px; max-width: 550px; border-radius: 8px; overflow: hidden;";
-	linkElm.addEventListener('click', (event) => {
-	event.preventDefault();
-	this.showImageModal(href);
-});
 
 const wrapper = document.createElement('div');
-	wrapper.className = "clickableWrapper__2d2ea";
+	wrapper.className = "clickableWrapper_d4597d";
 	wrapper.tabIndex = "0";
 	wrapper.setAttribute('aria-label', 'Image');
 	wrapper.setAttribute('aria-describedby', 'uid_4');
 	wrapper.setAttribute('role', 'button');
 
 
-	const img = document.createElement('img');
+const img = document.createElement('img');
 	img.className = "lazyImg-EmbedMoreImages";
 	img.alt = "Image";
-	img.style = "display: none; width: 100%; height: auto; max-height: 350px; max-width: 550px; border-radius: 8px; overflow: hidden;";
+	img.role = "button";
+	img.style = "display: none; width: 100%; height: auto; max-height: 350px; max-width: 550px; border-radius: 8px; overflow: hidden; cursor: pointer;";
 	wrapper.appendChild(img);
+	img.addEventListener('click', (event) => {
+		event.preventDefault();
+		this.showImageModal(href);
+	});
 	
 	this.preloadImage(img, href, (progressValue) => {
 		let formattedProgressValue = parseFloat(progressValue).toFixed(2);
@@ -216,7 +217,7 @@ const wrapper = document.createElement('div');
 	newContainer.appendChild(linkElm);
 	newContainer.appendChild(wrapper);
 
-	const oldContainer = link.closest('.nonVisualMediaItemContainer_df7417');
+	const oldContainer = link.closest('.nonVisualMediaItemContainer_cda674');
 	const showEmbeddedImage = (img, linkElm, wrapper, newContainer, oldContainer) => {
 		img.src = link.getAttribute('href');
 		newContainer.appendChild(linkElm);
@@ -391,14 +392,15 @@ preloadImage(img, url, onProgress, loadingBarElement) {
 showImageModal(imageSrc) {
 const modal = this.createHTML(`
 	<div class="layerContainer_cd0de5 layerContainer-EmbedMoreImages" style="z-index: 1002;">
-		<div class="backdrop__1a911 withLayer__29ace" style="opacity: 0; background: var(--black-500); transition: opacity 0.35s;"></div>
+		<div class="backdrop_e4f2ae withLayer_e4f2ae" style="background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(0px);"></div>
 		<div class="layer_c9e2da">
 		<div class="focusLock_f9a4c9" role="dialog" aria-label="Image" tabindex="-1" aria-modal="true">
 			<div class="modal_aee8c6 root_f9a4c9 fullscreenOnMobile_f9a4c9 rootWithShadow_f9a4c9" style="opacity: 0; transform: scale(0); transition: transform 0.15s;">
-			<div class="wrapper_aa8ea9">
-				<div class="imageWrapper__178ee image_aee8c6" style="width: auto; height: auto; display: inline-flex;justify-content: space-around;align-content: space-between">
-				<img alt="Image" src="${imageSrc}" class="imgEmbedMoreImages" style="max-width: 80%; max-height: 80%; width: auto; height: auto; transform: scale(1); transition: transform 0.35s;"></div>
-				<a class="anchor_af404b anchorUnderlineOnHover_af404b downloadLink_aa8ea9" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="position: absolute; bottom: 0; left: 150px;">Open in Browser</a>
+			<div class="wrapper_fb6520">
+				<div class="imageWrapper_d4597d image_aee8c6" style="width: auto; height: auto; display: inline-flex;justify-content: space-around;align-content: space-between">
+				<img alt="Image" src="${imageSrc}" class="imgEmbedMoreImages loadingOverlay_d4597d" style="max-height: 80%; width: auto; height: auto; transform: scale(1); transition: transform 0.35s;"></div>
+				<div class="optionsContainer_fb6520">
+				<a class="anchor_af404b anchorUnderlineOnHover_af404b downloadLink_fb6520" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="">Open in Browser</a>
 			</div>
 			</div>
 		</div>
@@ -417,7 +419,7 @@ if (titleBar) {
 const parentElement = document.querySelector('.appMount_ea7e65 .notAppAsidePanel_bd26cc') || document.body;
 parentElement.prepend(modal);
 
-const backdrop = modal.querySelector(".backdrop__1a911");
+const backdrop = modal.querySelector(".backdrop_e4f2ae");
 backdrop.addEventListener('click', () => {
 	const modalDialog = modal.querySelector('.modal_aee8c6');
 	const imgElement = modal.querySelector('.imgEmbedMoreImages');
@@ -468,7 +470,7 @@ window.addEventListener('beforeunload', () => {
 }
 
 observeContainers() {
-	const containers = document.querySelectorAll('.nonVisualMediaItemContainer_df7417');
+	const containers = document.querySelectorAll('.nonVisualMediaItemContainer_cda674');
 	containers.forEach((container) => {
 	this.embedImagesInContainer(container);
 	});
@@ -495,7 +497,7 @@ this.observerStart = new MutationObserver((mutations) => {
 			return;
 			}
 
-			const containers = node.classList.contains('nonVisualMediaItemContainer_df7417') ? [node] : node.querySelectorAll('.nonVisualMediaItemContainer_df7417');
+			const containers = node.classList.contains('nonVisualMediaItemContainer_cda674') ? [node] : node.querySelectorAll('.nonVisualMediaItemContainer_cda674');
 			containers.forEach((container) => this.embedImagesInContainer(container));
 		}
 		});
@@ -538,7 +540,7 @@ stop() {
 		this.extensionObserver = null;
 	}
 
-	const elements = document.querySelectorAll('.nonVisualMediaItemContainer_df7417');
+	const elements = document.querySelectorAll('.nonVisualMediaItemContainer_cda674');
 
 	elements.forEach(element => {
 		element.style.display = 'block';
@@ -568,7 +570,7 @@ stop() {
 }
 
 /**
-* Version 1.9 of 'Embed More Images'.
+* Version 1.10 of 'Embed More Images'.
 * Copyright (Boost Software License 1.0) 2023-2024 Knew
 * Link to plugin: https://github.com/Knewest/Embed-More-Images
 * Support server: https://discord.gg/NqqqzajfK4
