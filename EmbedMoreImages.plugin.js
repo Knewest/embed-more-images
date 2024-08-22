@@ -2,13 +2,21 @@
 * @name Embed More Images
 * @author Knew
 * @description Locally embeds images that are usually unembedded in the Discord client.
-* @version 1.10
+* @version 1.11
 * @authorId 332116671294734336
 * @authorLink https://github.com/Knewest
 * @invite NqqqzajfK4
 * @website https://twitter.com/KnewestLSEP
 * @source https://github.com/Knewest/embed-more-images
 * @updateUrl https://raw.githubusercontent.com/Knewest/embed-more-images/main/EmbedMoreImages.plugin.js
+* @changelog {banner} https://betterdiscord.app/resources/thumbnails/1345.png
+* @changelog {blurb} Missed or want to know previous changelogs? Find them [here](https://github.com/Knewest/embed-more-images/releases).
+* @changelog {added.title} What I changed:
+* @changelog {added.item} Updated class names using [this tool by Syndishanx](https://syndishanx.github.io/Website/Update_Classes.html).
+* @changelog {added.item} Fixed images not scaling properly anymore after a Discord update.
+* @changelog {added.item} Clicking around the image will now close the expanded view modal.
+* @changelog {added.item} The 'Open in browser' button now has a fixed location below the image.
+* @changelog {footer} Need help? Join my the [support server (NqqqzajfK4)](https://discord.gg/NqqqzajfK4).
 */
 
 module.exports = class EmbedMoreImages {
@@ -66,7 +74,7 @@ getSettingsPanel() {
 
 embedImagesInContainer(container) {
 	const imgExtensions = ['.webp', '.apng', '.png', '.jpe', '.jfif', '.jif', '.jfi', '.avif', '.bmp', '.dib', '.rle', '.ico', '.cur'].map(ext => [ext, ext.toUpperCase()]).flat();
-	const links = container.querySelectorAll('.fileNameLink_a4623d');
+	const links = container.querySelectorAll('.fileNameLink_b52bef');
 	
 	const embedImageRecursive = (index) => {
 		if (index >= links.length) return;
@@ -180,7 +188,7 @@ const img = document.createElement('img');
 	img.className = "lazyImg-EmbedMoreImages";
 	img.alt = "Image";
 	img.role = "button";
-	img.style = "display: none; width: 100%; height: auto; max-height: 350px; max-width: 550px; border-radius: 8px; overflow: hidden; cursor: pointer;";
+	img.style = "display: none; height: auto; max-height: 350px; max-width: 550px; border-radius: 8px; overflow: hidden; cursor: pointer;";
 	wrapper.appendChild(img);
 	img.addEventListener('click', (event) => {
 		event.preventDefault();
@@ -226,21 +234,21 @@ const img = document.createElement('img');
 		if (oldContainer && oldContainer.parentNode) {
 			oldContainer.style.display = 'none';
 			loadingContainer.style.display = 'none';
-			const spoilerInnerContainer = oldContainer.querySelector('.spoilerInnerContainer_a3d0f7');
+			const spoilerInnerContainer = oldContainer.querySelector('.spoilerInnerContainer_aa9639');
 	if (spoilerInnerContainer) {
 	const spoilerContent = document.createElement('div');
-	spoilerContent.className = "spoilerContent_a3d0f7 spoilerContainer_a3d0f7 hidden_a3d0f7";
+	spoilerContent.className = "spoilerContent_aa9639 spoilerContainer_aa9639 hidden_aa9639";
 	spoilerContent.setAttribute('aria-label', 'Spoiler');
 	spoilerContent.setAttribute('aria-expanded', 'false');
 	spoilerContent.setAttribute('role', 'button');
 	spoilerContent.setAttribute('tabindex', '0');
 
 	const spoilerWarning = document.createElement('div');
-	spoilerWarning.className = "spoilerWarning_a3d0f7 obscureWarning_a3d0f7";
+	spoilerWarning.className = "spoilerWarning_aa9639 obscureWarning_aa9639";
 	spoilerWarning.innerHTML = 'Spoiler';
 
 	const innerContainer = document.createElement('div');
-	innerContainer.className = "spoilerInnerContainer_a3d0f7";
+	innerContainer.className = "spoilerInnerContainer_aa9639";
 	innerContainer.style.pointerEvents = 'none';
 
 	const spoilerImage = newContainer.querySelector('.lazyImg-EmbedMoreImages');
@@ -394,13 +402,13 @@ const modal = this.createHTML(`
 	<div class="layerContainer_cd0de5 layerContainer-EmbedMoreImages" style="z-index: 1002;">
 		<div class="backdrop_e4f2ae withLayer_e4f2ae" style="background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(0px);"></div>
 		<div class="layer_c9e2da">
-		<div class="focusLock_f9a4c9" role="dialog" aria-label="Image" tabindex="-1" aria-modal="true">
+		<div class="focusLock_f9a4c9" role="dialog" aria-label="Image" tabindex="-1" aria-modal="true"> 
 			<div class="modal_aee8c6 root_f9a4c9 fullscreenOnMobile_f9a4c9 rootWithShadow_f9a4c9" style="opacity: 0; transform: scale(0); transition: transform 0.15s;">
-			<div class="wrapper_fb6520">
-				<div class="imageWrapper_d4597d image_aee8c6" style="width: auto; height: auto; display: inline-flex;justify-content: space-around;align-content: space-between">
-				<img alt="Image" src="${imageSrc}" class="imgEmbedMoreImages loadingOverlay_d4597d" style="max-height: 80%; width: auto; height: auto; transform: scale(1); transition: transform 0.35s;"></div>
+			<div class="wrapper_fb6520" style="transform: translateX(10%);">
+				<div class="imageWrapper_d4597d image_aee8c6" style="width: auto; height: auto; display: block;">
+				<img alt="Image" src="${imageSrc}" class="imgEmbedMoreImages loadingOverlay_d4597d" style="max-height: 80%; max-width: 80%; width: auto; height: auto; transform: scale(1); transition: transform 0.35s;"></div>
 				<div class="optionsContainer_fb6520">
-				<a class="anchor_af404b anchorUnderlineOnHover_af404b downloadLink_fb6520" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="">Open in Browser</a>
+				<a class="anchor_af404b anchorUnderlineOnHover_af404b downloadLink_fb6520" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="">Open in Browser</a> 
 			</div>
 			</div>
 		</div>
@@ -420,32 +428,39 @@ const parentElement = document.querySelector('.appMount_ea7e65 .notAppAsidePanel
 parentElement.prepend(modal);
 
 const backdrop = modal.querySelector(".backdrop_e4f2ae");
-backdrop.addEventListener('click', () => {
-	const modalDialog = modal.querySelector('.modal_aee8c6');
-	const imgElement = modal.querySelector('.imgEmbedMoreImages');
+const imageWrapper = modal.querySelector(".imageWrapper_d4597d");
+//const optionsContainer = modal.querySelector(".optionsContainer_fb6520");
 
-	imgElement.style.transform = 'scale(0)';
-	imgElement.style.opacity = '0';
-	imgElement.style.transition = 'transform 0.35s, opacity 0.35s';
+const elements = [backdrop, imageWrapper];
 
-	setTimeout(() => {
-		modal.style.opacity = '0';
-		backdrop.style.opacity = '0';
-		modalDialog.style.transform = 'scale(0)';
-		
-		modal.style.transition = 'opacity 0.35s';
-		backdrop.style.transition = 'opacity 0.35s';
-		modalDialog.style.transition = 'transform 0.15s';
-	}, 150);
+elements.forEach(element => {
+    element.addEventListener('click', () => {
+		const modalDialog = modal.querySelector('.modal_aee8c6');
+		const imgElement = modal.querySelector('.imgEmbedMoreImages');
 
-	setTimeout(() => {
-		const layer = modal.querySelector('.layer_c9e2da'); 
-		layer.remove(); 
-	}, 100);
+		imgElement.style.transform = 'scale(0)';
+		imgElement.style.opacity = '0';
+		imgElement.style.transition = 'transform 0.35s, opacity 0.35s';
 
-	setTimeout(() => {
-		modal.remove(); 
-	}, 50);
+		setTimeout(() => {
+			modal.style.opacity = '0';
+			backdrop.style.opacity = '0';
+			modalDialog.style.transform = 'scale(0)';
+			
+			modal.style.transition = 'opacity 0.35s';
+			backdrop.style.transition = 'opacity 0.35s';
+			modalDialog.style.transition = 'transform 0.15s';
+		}, 150);
+
+		setTimeout(() => {
+			const layer = modal.querySelector('.layer_c9e2da'); 
+			layer.remove(); 
+		}, 100);
+
+		setTimeout(() => {
+			modal.remove(); 
+		}, 50);
+    });
 });
 
 
