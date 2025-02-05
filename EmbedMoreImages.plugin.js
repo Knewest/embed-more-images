@@ -583,7 +583,7 @@ stop() {
 
 /** IGNORE THIS
 * Version 1.10 of 'Embed More Images'.
-* Copyright (Boost Software License 1.0) 2023-2024 Knew
+* Copyright (Boost Software License 1.0) 2023-2025 Knew
 * Link to plugin: https://github.com/Knewest/Embed-More-Images
 * Support server: https://discord.gg/NqqqzajfK4
 *
