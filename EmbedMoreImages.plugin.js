@@ -2,7 +2,7 @@
 * @name Embed More Images
 * @author Knew
 * @description Locally embeds images that are usually unembedded in the Discord client.
-* @version 1.12
+* @version 1.13
 * @authorId 332116671294734336
 * @authorLink https://github.com/Knewest
 * @invite NqqqzajfK4
@@ -71,7 +71,7 @@ getSettingsPanel() {
 
 embedImagesInContainer(container) {
 	const imgExtensions = ['.webp', '.apng', '.png', '.jpe', '.jfif', '.jif', '.jfi', '.avif', '.bmp', '.dib', '.rle', '.ico', '.cur'].map(ext => [ext, ext.toUpperCase()]).flat();
-	const links = container.querySelectorAll('.fileNameLink__0ccae');
+	const links = container.querySelectorAll('._0ccaee68b77c7469-fileNameLink');
 	
 	const embedImageRecursive = (index) => {
 		if (index >= links.length) return;
@@ -87,7 +87,7 @@ embedImagesInContainer(container) {
 	if (imgExtensions.some((ext) => hrefWithoutQuery.endsWith(ext))) {
 		const parentContainer = link.closest('.nonMediaAttachmentsContainer__912df');
 		if (parentContainer) {
-			const existingImages = parentContainer.querySelectorAll('.imageContainer__0f481.imageContainer-EmbedMoreImages.container_b7e1cb .originalLink_af017a');
+			const existingImages = parentContainer.querySelectorAll('._0f481cbbd7530492-imageContainer.imageContainer-EmbedMoreImages.b7e1cb0370c2dd0e-container .af017ab847f75d02-originalLink');
 			for (let i = 0; i < existingImages.length; i++) {
 			if (existingImages[i].href === href) {
 				embedImageRecursive(index + 1);
@@ -98,11 +98,11 @@ embedImagesInContainer(container) {
 	}
 
 const newContainer = document.createElement('div');
-newContainer.className = "imageContainer__0f481 imageContainer-EmbedMoreImages container_b7e1cb";
+newContainer.className = "_0f481cbbd7530492-imageContainer imageContainer-EmbedMoreImages b7e1cb0370c2dd0e-container";
 newContainer.style = "border-radius: 8px; overflow: hidden; position: relative;";
 	
 	const clickableWrapper = document.createElement('div');
-	clickableWrapper.className = "clickableWrapper_af017a";
+	clickableWrapper.className = "af017ab847f75d02-clickableWrapper";
 	clickableWrapper.style = "";
 	clickableWrapper.tabIndex = "0";
 	clickableWrapper.setAttribute('aria-label', 'Image');
@@ -136,7 +136,7 @@ newContainer.style = "border-radius: 8px; overflow: hidden; position: relative;"
 let observer = new MutationObserver((mutations) => {
 for (let mutation of mutations) {
 	if (mutation.type === 'childList') {
-	const clickableWrapper = mutation.target.querySelector('.clickableWrapper_af017a');
+	const clickableWrapper = mutation.target.querySelector('.af017ab847f75d02-clickableWrapper');
 	if (clickableWrapper) {
 const imgExtension = document.createElement('span');
 imgExtension.className = "altText-EmbedMoreImages imgExtension-EmbedMoreImages";
@@ -168,13 +168,13 @@ observer.observe(newContainer, {childList: true});
 container.appendChild(newContainer); 
 
 const linkElm = document.createElement('a');
-	linkElm.className = "originalLink_af017a";
+	linkElm.className = "af017ab847f75d02-originalLink";
 	linkElm.href = href;
 	linkElm.dataset.role = "img";
 	linkElm.style = "max-height: 350px; max-width: 550px; border-radius: 8px; overflow: hidden;";
 
 const wrapper = document.createElement('div');
-	wrapper.className = "clickableWrapper_af017a";
+	wrapper.className = "af017ab847f75d02-clickableWrapper";
 	wrapper.tabIndex = "0";
 	wrapper.setAttribute('aria-label', 'Image');
 	wrapper.setAttribute('aria-describedby', 'uid_4');
@@ -222,7 +222,7 @@ const img = document.createElement('img');
 	newContainer.appendChild(linkElm);
 	newContainer.appendChild(wrapper);
 
-	const oldContainer = link.closest('.nonVisualMediaItemContainer_f4758a');
+	const oldContainer = link.closest('.f4758a8d6346d18b-nonVisualMediaItemContainer');
 	const showEmbeddedImage = (img, linkElm, wrapper, newContainer, oldContainer) => {
 		img.src = link.getAttribute('href');
 		newContainer.appendChild(linkElm);
@@ -231,21 +231,21 @@ const img = document.createElement('img');
 		if (oldContainer && oldContainer.parentNode) {
 			oldContainer.style.display = 'none';
 			loadingContainer.style.display = 'none';
-			const spoilerInnerContainer = oldContainer.querySelector('.spoilerInnerContainer__54ab5');
+			const spoilerInnerContainer = oldContainer.querySelector('._299eb87491f4b6d1-spoilerInnerContainer');
 	if (spoilerInnerContainer) {
 	const spoilerContent = document.createElement('div');
-	spoilerContent.className = "spoilerContent__54ab5 spoilerContainer__54ab5 hidden__54ab5";
+	spoilerContent.className = "_299eb87491f4b6d1-spoilerContent _299eb87491f4b6d1-spoilerContainer _299eb87491f4b6d1-hidden";
 	spoilerContent.setAttribute('aria-label', 'Spoiler');
 	spoilerContent.setAttribute('aria-expanded', 'false');
 	spoilerContent.setAttribute('role', 'button');
 	spoilerContent.setAttribute('tabindex', '0');
 
 	const spoilerWarning = document.createElement('div');
-	spoilerWarning.className = "spoilerWarning__54ab5 obscureWarning__54ab5";
+	spoilerWarning.className = "spoilerWarning__54ab5 _299eb87491f4b6d1-obscureWarning";
 	spoilerWarning.innerHTML = 'Spoiler';
 
 	const innerContainer = document.createElement('div');
-	innerContainer.className = "spoilerInnerContainer__54ab5";
+	innerContainer.className = "_299eb87491f4b6d1-spoilerInnerContainer";
 	innerContainer.style.pointerEvents = 'none';
 
 	const spoilerImage = newContainer.querySelector('.lazyImg-EmbedMoreImages');
@@ -396,16 +396,16 @@ preloadImage(img, url, onProgress, loadingBarElement) {
 
 showImageModal(imageSrc) {
 const modal = this.createHTML(`
-	<div class="layerContainer_da8173 layerContainer-EmbedMoreImages" style="z-index: 1002;">
-		<div class="backdrop__78332 withLayer__78332" style="background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(0px);"></div>
-		<div class="layer_bc663c">
-		<div class="focusLock__49fc1" role="dialog" aria-label="Image" tabindex="-1" aria-modal="true"> 
-			<div class="modal_b0827a root__49fc1 fullscreenOnMobile__49fc1 rootWithShadow__49fc1" style="opacity: 0; transform: scale(0); transition: transform 0.15s;">
+	<div class="_59d0d7075b521375-layerContainer layerContainer-EmbedMoreImages" style="z-index: 1002;">
+		<div class="_783321f3468cf9e8-backdrop _783321f3468cf9e8-withLayer" style="background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(0px);"></div>
+		<div class="bc663cf6190ce9ad-layer">
+		<div class="_49fc18ba07c5025f-focusLock" role="dialog" aria-label="Image" tabindex="-1" aria-modal="true"> 
+			<div class="modal_b0827a _49fc18ba07c5025f-root _49fc18ba07c5025f-fullscreenOnMobile _49fc18ba07c5025f-rootWithShadow" style="opacity: 0; transform: scale(0); transition: transform 0.15s;">
 			<div class="wrapper_fb6520" style="transform: translateX(10%);">
-				<div class="imageWrapper_af017a image_aee8c6" style="width: auto; height: auto; display: block;">
-				<img alt="Image" src="${imageSrc}" class="imgEmbedMoreImages loadingOverlay_af017a" style="max-height: 80%; max-width: 80%; width: auto; height: auto; transform: scale(1); transition: transform 0.35s;"></div>
+				<div class="af017ab847f75d02-imageWrapper image_aee8c6" style="width: auto; height: auto; display: block;">
+				<img alt="Image" src="${imageSrc}" class="imgEmbedMoreImages af017ab847f75d02-loadingOverlay" style="max-height: 80%; max-width: 80%; width: auto; height: auto; transform: scale(1); transition: transform 0.35s;"></div>
 				<div class="optionsContainer_fb6520">
-				<a class="anchor_edefb8 anchorUnderlineOnHover_edefb8 downloadLink_fb6520" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="">Open in Browser</a> 
+				<a class="edefb8e22d63c542-anchor edefb8e22d63c542-anchorUnderlineOnHover downloadLink_fb6520" href="${imageSrc}" rel="noreferrer noopener" target="_blank" role="button" tabindex="0" style="">Open in Browser</a> 
 			</div>
 			</div>
 		</div>
@@ -413,19 +413,19 @@ const modal = this.createHTML(`
 		</div>
 `);
 
-const titleBar = document.querySelector('.titleBar__421ed');
+const titleBar = document.querySelector('._421edea01cb52e16-titleBar');
 
 if (titleBar) {
   titleBar.style.zIndex = '1001';
 } else {
-  console.error('Element ".titleBar__421ed" not found for Embed More Images. Please join the support server and report this. Support server link: https://discord.gg/NqqqzajfK4');
+  console.error('Element "._421edea01cb52e16-titleBar" not found for Embed More Images. Please join the support server and report this. Support server link: https://discord.gg/NqqqzajfK4');
 }
 
-const parentElement = document.querySelector('.appMount__51fd7 .notAppAsidePanel_a3002d') || document.body;
+const parentElement = document.querySelector('._51fd70792ee2e563-appMount .a3002d7de5be5280-notAppAsidePanel') || document.body;
 parentElement.prepend(modal);
 
-const backdrop = modal.querySelector(".backdrop__78332");
-const imageWrapper = modal.querySelector(".imageWrapper_af017a");
+const backdrop = modal.querySelector("._783321f3468cf9e8-backdrop");
+const imageWrapper = modal.querySelector(".af017ab847f75d02-imageWrapper");
 //const optionsContainer = modal.querySelector(".optionsContainer_fb6520");
 
 const elements = [backdrop, imageWrapper];
@@ -450,7 +450,7 @@ elements.forEach(element => {
 		}, 150);
 
 		setTimeout(() => {
-			const layer = modal.querySelector('.layer_bc663c'); 
+			const layer = modal.querySelector('.bc663cf6190ce9ad-layer'); 
 			layer.remove(); 
 		}, 100);
 
@@ -482,7 +482,7 @@ window.addEventListener('beforeunload', () => {
 }
 
 observeContainers() {
-	const containers = document.querySelectorAll('.nonVisualMediaItemContainer_f4758a');
+	const containers = document.querySelectorAll('.f4758a8d6346d18b-nonVisualMediaItemContainer');
 	containers.forEach((container) => {
 	this.embedImagesInContainer(container);
 	});
@@ -509,7 +509,7 @@ this.observerStart = new MutationObserver((mutations) => {
 			return;
 			}
 
-			const containers = node.classList.contains('nonVisualMediaItemContainer_f4758a') ? [node] : node.querySelectorAll('.nonVisualMediaItemContainer_f4758a');
+			const containers = node.classList.contains('f4758a8d6346d18b-nonVisualMediaItemContainer') ? [node] : node.querySelectorAll('.f4758a8d6346d18b-nonVisualMediaItemContainer');
 			containers.forEach((container) => this.embedImagesInContainer(container));
 		}
 		});
@@ -552,7 +552,7 @@ stop() {
 		this.extensionObserver = null;
 	}
 
-	const elements = document.querySelectorAll('.nonVisualMediaItemContainer_f4758a');
+	const elements = document.querySelectorAll('.f4758a8d6346d18b-nonVisualMediaItemContainer');
 
 	elements.forEach(element => {
 		element.style.display = 'block';
@@ -573,7 +573,7 @@ stop() {
 		img.removeAttribute('src');
 	});
 
-	document.querySelectorAll('.layerContainer_da8173.layerContainer-EmbedMoreImages').forEach(modal => {
+	document.querySelectorAll('._59d0d7075b521375-layerContainer.layerContainer-EmbedMoreImages').forEach(modal => {
 		modal.parentNode.removeChild(modal);
 	});
 
